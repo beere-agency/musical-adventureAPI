@@ -9,4 +9,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="MAData\MAData.csproj" />
+    <ProjectReference Include="MADomain\MADomain.csproj" />
+    <ProjectReference Include="MAService\MAService.csproj" />
+    <ProjectReference Include="MAUtilities\MAUtilities.csproj" />
+  </ItemGroup>
+
 </Project>
