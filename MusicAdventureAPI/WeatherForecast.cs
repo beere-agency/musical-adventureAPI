@@ -1,6 +1,6 @@
 using System;
 
-namespace musical_adventureAPI
+namespace MusicAdventureAPI
 {
     public class WeatherForecast
     {
