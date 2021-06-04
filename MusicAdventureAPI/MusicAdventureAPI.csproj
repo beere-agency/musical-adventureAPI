@@ -18,6 +18,8 @@
   <ItemGroup>
     <ProjectReference Include="..\MADomain\MADomain.csproj" />
     <ProjectReference Include="..\MAData\MAData.csproj" />
+    <ProjectReference Include="..\MAService\MAService.csproj" />
+    <ProjectReference Include="..\MAUtilities\MAUtilities.csproj" />
   </ItemGroup>
 
 </Project>

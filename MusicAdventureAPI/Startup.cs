@@ -1,5 +1,7 @@
 using MAData;
 using MADomain;
+using MAService.Contract;
+using MAService.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -93,6 +95,9 @@ namespace MusicAdventureAPI
                     }
                 });
             });
+
+            //Dependency Injection
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
