@@ -8,7 +8,7 @@ namespace MAService.Interface
         void Create(Category category);
         void Delete(Category category);
         Category GetById(int Id);
-        IQueryable<Category> GetClients();
+        IQueryable<Category> GetCategories();
         void Update(Category category);
     }
 }

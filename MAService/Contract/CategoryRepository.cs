@@ -33,7 +33,7 @@ namespace MAService.Contract
             return ctx.Categories.FirstOrDefault(c => c.Id == Id);
         }
 
-        public IQueryable<Category> GetClients()
+        public IQueryable<Category> GetCategories()
         {
             return ctx.Categories;
         }

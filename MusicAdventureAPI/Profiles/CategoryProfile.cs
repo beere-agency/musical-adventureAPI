@@ -13,6 +13,8 @@ namespace MusicAdventureAPI.Profiles
         public CategoryProfile()
         {
             CreateMap<Category, CategoryDTO>();
+            CreateMap<CategoryCreationDTO, Category>();
+            CreateMap<CategoryUpdateDTO, Category>();
         }
     }
 }
