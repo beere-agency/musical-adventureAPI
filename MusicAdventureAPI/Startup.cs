@@ -99,6 +99,7 @@ namespace MusicAdventureAPI
 
             //Dependency Injection
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

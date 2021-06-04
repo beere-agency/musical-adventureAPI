@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace MusicAdventureAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository categoryRepo;
