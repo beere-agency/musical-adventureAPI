@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MADomain;
 using MAService.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicAdventureAPI.DTOs;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace MusicAdventureAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class TagController : ControllerBase
     {

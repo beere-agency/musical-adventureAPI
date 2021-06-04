@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MADomain;
 using MAService.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MusicAdventureAPI.DTOs;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MusicAdventureAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
