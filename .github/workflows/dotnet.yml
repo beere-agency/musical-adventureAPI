@@ -22,11 +22,10 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: dev
     steps:
 
       # Checkout the repo
-      - uses: actions/checkout@main
+      - uses: actions/checkout@release
       
       # Setup .NET Core SDK
       - name: Setup .NET Core
@@ -39,7 +38,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -r linux-x64 --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
+          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
