@@ -40,10 +40,11 @@ jobs:
           dotnet build --configuration Release
           dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
       #Zip Files
-      - name: zip Action
+      - name: Zip Action
         uses: papeloto/action-zip@v1
         with:
             files: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop'
+            path: ${{ github.workspace }}/result.zip
             dest: result.zip
           
       # Deploy to Azure Web apps
