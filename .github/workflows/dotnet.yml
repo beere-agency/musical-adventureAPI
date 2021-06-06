@@ -3,10 +3,10 @@ name: Deploy ASP.NET Core app to Azure Web App
 on:
   push:
     branches:
-      - master
+      - release
   pull_request:
     branches:
-      - release
+      - '*'
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions
 #
@@ -26,7 +26,7 @@ jobs:
     steps:
 
       # Checkout the repo
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       
       # Setup .NET Core SDK
       - name: Setup .NET Core
