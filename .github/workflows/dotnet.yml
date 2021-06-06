@@ -16,7 +16,7 @@ on:
 # 2. Change these variables for your configuration:
 env:
   AZURE_WEBAPP_NAME: musicadventure    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: 'ApiDrop'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '5.0.x'           # set this to the dot net version to use
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -r linux-x64 --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' 
+          dotnet publish -r linux-x64 --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
@@ -47,4 +47,4 @@ jobs:
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop'
