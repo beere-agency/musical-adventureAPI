@@ -43,7 +43,7 @@ jobs:
       - name: Compress
         uses: TonyBogdanov/zip@1.0
         with:
-            args: zip -qq -r '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/Compress'
+            args: zip -qq -r './ApiDrop' . -i './Compress'
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
