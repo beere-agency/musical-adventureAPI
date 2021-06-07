@@ -39,7 +39,16 @@ jobs:
           dotnet restore
           dotnet build --configuration Release
           dotnet publish -c Release -r linux-x64 -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
-      
+      #Zip Files
+      - name: Zip Action
+        uses: papeloto/action-zip@v1
+        with:
+            files: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop'
+            dest: result.zip
+      - uses: actions/upload-artifact@v1
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}/result.zip
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
