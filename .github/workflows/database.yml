@@ -24,7 +24,7 @@ jobs:
     - name: Install EF
       run: dotnet tool install --global dotnet-ef
     - name: Build Migration File
-      run: dotnet-ef migrations script -i -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/migrate.sql' -s MusicAdventureAPI\MusicAdventureAPI.csproj -p MAData\MAData.csproj
+      run: dotnet-ef migrations script -i -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/migrate.sql' -s MusicAdventureAPI/MusicAdventureAPI.csproj -p MAData/MAData.csproj
     - name: Azure SQL Deploy (dacpac, file, folder)
       # You may pin to the exact commit or the version.
       # uses: XLipcak/sql-action@1b2b1ea66beb232831e97be2be8382be8f006840
