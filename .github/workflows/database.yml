@@ -26,5 +26,5 @@ jobs:
     - name: Build Migration File
       run: dotnet-ef migrations script -i -o '${{ github.workspace }}/migrate.sql' -s MusicAdventureAPI/MusicAdventureAPI.csproj -p MAData/MAData.csproj
     - name: Update Database with Migration
-      run: dotnet-ef database update --connection '${{ secrets.SQL_CONNECTION_STRING  }}'
+      run: dotnet-ef database update --connection '${{ secrets.SQL_CONNECTION_STRING  }}' -s MusicAdventureAPI/MusicAdventureAPI.csproj -p MAData/MAData.csproj
     
