@@ -38,7 +38,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -r linux-x64 -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
+          dotnet publish -r linux-x64 -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
       #Zip Files
       - name: Zip Action
         uses: papeloto/action-zip@v1
