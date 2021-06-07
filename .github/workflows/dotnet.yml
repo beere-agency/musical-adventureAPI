@@ -38,7 +38,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
+          dotnet publish -c Release -r linux-x64 -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
       
           
       # Deploy to Azure Web apps
