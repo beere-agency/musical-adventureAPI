@@ -38,7 +38,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
+          dotnet publish MusicAdventureAPI/MusicAdventureAPI.csproj -r linux-x64 -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop' 
       #Zip Files
       - name: Zip Action
         uses: papeloto/action-zip@v1
@@ -56,4 +56,4 @@ jobs:
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: result.zip
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ApiDrop'
