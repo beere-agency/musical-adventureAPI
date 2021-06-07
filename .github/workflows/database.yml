@@ -1,0 +1,30 @@
+name: Database Migration
+
+on:
+  push:
+    branches: 
+        - release
+  pull_request:
+    branches: 
+        - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Install EF
+      run: dotnet tool install --global dotnet-ef
+    - name: Build Migration File
+      run: dotnet-ef migrations script -i -o '${{ github.workspace }}/migrate.sql' -s MusicAdventureAPI/MusicAdventureAPI.csproj -p MAData/MAData.csproj
+    - name: Update Database with Migration
+      run: dotnet-ef database update --connection '${{ secrets.SQL_CONNECTION_STRING  }}' -s MusicAdventureAPI/MusicAdventureAPI.csproj -p MAData/MAData.csproj
+    
