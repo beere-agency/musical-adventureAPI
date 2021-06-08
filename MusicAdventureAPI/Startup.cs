@@ -1,6 +1,6 @@
 using MAData;
 using MADomain;
-using MAService.Contract;
+using MAService.Implementation;
 using MAService.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;

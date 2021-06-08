@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MAService.Contract
+namespace MAService.Implementation
 {
     public class CategoryRepository : ICategoryRepository
     {
@@ -21,7 +21,7 @@ namespace MAService.Contract
         {
             if (category == null)
                 throw new ArgumentNullException(nameof(category));
-
+            category.DateCreated = DateTime.Now;
             ctx.Categories.Add(category);
             SaveChanges();
         }
@@ -40,6 +40,7 @@ namespace MAService.Contract
 
         public void Update(Category category)
         {
+            category.LastModified = DateTime.Now;
             ctx.Categories.Update(category);
             SaveChanges();
         }

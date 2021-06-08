@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MAService.Contract
+namespace MAService.Implementation
 {
     public class TagRepository : ITagRepository
     {
@@ -21,7 +21,7 @@ namespace MAService.Contract
         {
             if (tag == null)
                 throw new ArgumentNullException(nameof(tag));
-
+            tag.DateCreated = DateTime.Now;
             ctx.Tags.Add(tag);
             SaveChanges();
         }
@@ -40,6 +40,7 @@ namespace MAService.Contract
 
         public void Update(Tag tag)
         {
+            tag.LastModified = DateTime.Now;
             ctx.Tags.Update(tag);
             SaveChanges();
         }
