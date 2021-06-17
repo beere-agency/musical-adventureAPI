@@ -12,12 +12,16 @@ namespace MusicAdventureAPI.DTOs
         public DateTime DateCreated { get; set; }
         public DateTime LastModified { get; set; }
         public string Description { get; set; }
+        public bool IsSubCategory { get; set; }
+        public int ParentId { get; set; }
     }
 
     public class CategoryCreationDTO
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool IsSubCategory { get; set; }
+        public int ParentId { get; set; }
     }
 
     public class CategoryUpdateDTO
@@ -25,5 +29,7 @@ namespace MusicAdventureAPI.DTOs
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool IsSubCategory { get; set; }
+        public int ParentId { get; set; }
     }
 }
