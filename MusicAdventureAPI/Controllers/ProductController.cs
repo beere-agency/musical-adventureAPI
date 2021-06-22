@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using MADomain;
-using MAService.Implementation;
+using MAService.Interface;
 using Microsoft.AspNetCore.Mvc;
 using MusicAdventureAPI.DTOs;
 
@@ -12,9 +12,9 @@ namespace MusicAdventureAPI.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly ProductRepository productRepo;
+        private readonly IProductRepository productRepo;
         private readonly IMapper mapper;
-        public ProductController(ProductRepository _productRepo, IMapper _mapper)
+        public ProductController(IProductRepository _productRepo, IMapper _mapper)
         {
             productRepo = _productRepo;
             mapper = _mapper;
@@ -23,7 +23,7 @@ namespace MusicAdventureAPI.Controllers
         [HttpGet]
         public ActionResult<List<ProductDTO>> GetAllProducts()
         {
-            var products = productRepo.GetProducts().ToList();
+            var products = productRepo.GetProductsWithRelationship().ToList();
             return Ok(mapper.Map<List<ProductDTO>>(products));
         }
 
