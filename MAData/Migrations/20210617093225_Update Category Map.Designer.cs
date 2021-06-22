@@ -4,14 +4,16 @@ using MAData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MAData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210617093225_Update Category Map")]
+    partial class UpdateCategoryMap
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,7 +111,12 @@ namespace MAData.Migrations
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Categories");
                 });
@@ -144,36 +151,6 @@ namespace MAData.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("MADomain.ProductCategory", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCategories");
-                });
-
-            modelBuilder.Entity("MADomain.ProductTag", b =>
-                {
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TagId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductTags");
-                });
-
             modelBuilder.Entity("MADomain.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -190,7 +167,12 @@ namespace MAData.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Tags");
                 });
@@ -326,42 +308,18 @@ namespace MAData.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MADomain.ProductCategory", b =>
+            modelBuilder.Entity("MADomain.Category", b =>
                 {
-                    b.HasOne("MADomain.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MADomain.Product", "Product")
-                        .WithMany("ProductCategories")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Product");
+                    b.HasOne("MADomain.Product", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("ProductId");
                 });
 
-            modelBuilder.Entity("MADomain.ProductTag", b =>
+            modelBuilder.Entity("MADomain.Tag", b =>
                 {
-                    b.HasOne("MADomain.Product", "Product")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MADomain.Tag", "Tag")
-                        .WithMany()
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Tag");
+                    b.HasOne("MADomain.Product", null)
+                        .WithMany("Tags")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -417,9 +375,9 @@ namespace MAData.Migrations
 
             modelBuilder.Entity("MADomain.Product", b =>
                 {
-                    b.Navigation("ProductCategories");
+                    b.Navigation("Categories");
 
-                    b.Navigation("ProductTags");
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }
