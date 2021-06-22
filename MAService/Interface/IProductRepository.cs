@@ -10,5 +10,6 @@ namespace MAService.Interface
         Product GetById(int Id);
         IQueryable<Product> GetProducts();
         void Update(Product product);
+        IQueryable<Product> GetProductsWithRelationship();
     }
 }

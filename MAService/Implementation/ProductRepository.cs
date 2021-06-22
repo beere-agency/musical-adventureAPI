@@ -45,8 +45,8 @@ namespace MAService.Implementation
         public IQueryable<Product> GetProductsWithRelationship()
         {
             return ctx.Products
-                        .Include(x => x.Categories)
-                        .Include(x => x.Tags);
+                        .Include(x => x.ProductCategories).ThenInclude(x => x.Category)
+                        .Include(x => x.ProductTags).ThenInclude(x => x.Tag);
         }
 
         public void Update(Product product)

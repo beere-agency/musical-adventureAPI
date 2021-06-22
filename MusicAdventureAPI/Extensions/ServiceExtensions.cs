@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using MAService.Implementation;
+using MAService.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -34,6 +36,13 @@ namespace MusicAdventureAPI.Extensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
                 };
             });
+        }
+
+        public static void ConfigureRepository(this IServiceCollection services)
+        {
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
     }
 }
