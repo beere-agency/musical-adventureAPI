@@ -34,7 +34,7 @@ namespace MAService.Implementation
         {
             if (Id <= 0)
                 throw new ArgumentNullException("product");
-            return ctx.Products.FirstOrDefault(c => c.Id == Id);
+            return GetProductsWithRelationship().FirstOrDefault(c => c.Id == Id);
         }
 
         public IQueryable<Product> GetProducts()
