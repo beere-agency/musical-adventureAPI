@@ -24,7 +24,7 @@ namespace MusicAdventureAPI.DTOs
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public IFormFile ImageUrl { get; set; }
+        public IFormFile ImageFile { get; set; }
         [ModelBinder(BinderType = typeof(TypeBinder<List<int>>))]
         public List<int> CategoryIds { get; set; }
         [ModelBinder(BinderType = typeof(TypeBinder<List<int>>))]

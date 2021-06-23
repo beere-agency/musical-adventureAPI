@@ -9,4 +9,8 @@
     <ProjectReference Include="..\MADomain\MADomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.9.1" />
+  </ItemGroup>
+
 </Project>
