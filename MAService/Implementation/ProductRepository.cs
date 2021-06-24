@@ -46,7 +46,8 @@ namespace MAService.Implementation
         {
             return ctx.Products
                         .Include(x => x.ProductCategories).ThenInclude(x => x.Category)
-                        .Include(x => x.ProductTags).ThenInclude(x => x.Tag);
+                        .Include(x => x.ProductTags).ThenInclude(x => x.Tag)
+                        .AsSplitQuery();
         }
 
         public void Update(Product product)
