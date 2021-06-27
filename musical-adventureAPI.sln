@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAdventureAPI", "MusicAdventureAPI\MusicAdventureAPI.csproj", "{BE3D4C89-77E6-4501-8E22-8EB5EB9819E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicAdventureAPI", "MusicAdventureAPI\MusicAdventureAPI.csproj", "{BE3D4C89-77E6-4501-8E22-8EB5EB9819E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAData", "MAData\MAData.csproj", "{ED522C98-CF72-4EEC-A072-56E1A97488F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAData", "MAData\MAData.csproj", "{ED522C98-CF72-4EEC-A072-56E1A97488F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADomain", "MADomain\MADomain.csproj", "{11DE8AF1-63D8-4678-92A9-D92AB799A965}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADomain", "MADomain\MADomain.csproj", "{11DE8AF1-63D8-4678-92A9-D92AB799A965}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAService", "MAService\MAService.csproj", "{E5ACCE30-BE89-4CE2-856B-603555E159FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAService", "MAService\MAService.csproj", "{E5ACCE30-BE89-4CE2-856B-603555E159FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUtilities", "MAUtilities\MAUtilities.csproj", "{1C3F5124-4028-4C8B-A0E0-201E00187BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUtilities", "MAUtilities\MAUtilities.csproj", "{1C3F5124-4028-4C8B-A0E0-201E00187BB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MATest", "MATest\MATest.csproj", "{75DA311E-7A59-43C7-97B7-81D5706DD35C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,18 @@ Global
 		{1C3F5124-4028-4C8B-A0E0-201E00187BB3}.Release|x64.Build.0 = Release|Any CPU
 		{1C3F5124-4028-4C8B-A0E0-201E00187BB3}.Release|x86.ActiveCfg = Release|Any CPU
 		{1C3F5124-4028-4C8B-A0E0-201E00187BB3}.Release|x86.Build.0 = Release|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Debug|x64.Build.0 = Debug|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Debug|x86.Build.0 = Debug|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Release|x64.ActiveCfg = Release|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Release|x64.Build.0 = Release|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Release|x86.ActiveCfg = Release|Any CPU
+		{75DA311E-7A59-43C7-97B7-81D5706DD35C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
