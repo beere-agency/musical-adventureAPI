@@ -21,5 +21,20 @@ namespace MATest.Data
             };
             return tag;
         }
+
+        public Category GetCategory(int id,string name,string description, DateTime dateCreated, DateTime lastModified, int parentId = 0, bool isSubCategory = false)
+        {
+            var category = new Category
+            {
+                Id = id,
+                Description = description,
+                Name = name,
+                ParentId = parentId,
+                IsSubCategory = isSubCategory,
+                LastModified = lastModified,
+                DateCreated = dateCreated
+            };
+            return category;
+        }
     }
 }

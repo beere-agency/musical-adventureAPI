@@ -33,6 +33,13 @@ namespace MATest
             tags.Add(dataFactory.GetTag(3,"fpl",DateTime.Now.AddDays(-1),DateTime.Now));
             tags.Add(dataFactory.GetTag(6,"hello",DateTime.Now.AddDays(-1),DateTime.Now));
             context.Tags.AddRange(tags);
+
+            categories.Add(dataFactory.GetCategory(1, "Hip hop", "American Music", DateTime.Now.AddDays(-1), DateTime.Now));
+            categories.Add(dataFactory.GetCategory(2, "Afro Pop", "African Music", DateTime.Now.AddDays(-1), DateTime.Now));
+            categories.Add(dataFactory.GetCategory(3, "R and B", "Rythm and Blues Music", DateTime.Now.AddDays(-1), DateTime.Now));
+            categories.Add(dataFactory.GetCategory(4, "Tungba", "Nigerian", DateTime.Now.AddDays(-1), DateTime.Now,2,true));
+            context.Categories.AddRange(categories);
+
             context.SaveChanges();
 
             return context;
