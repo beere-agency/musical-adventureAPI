@@ -40,11 +40,11 @@ namespace MATest.Test.Services
 
             //Act
             tagRepository.Create(tag);
-            var allEmployee = tagRepository.GetTags().ToList();
+            var allTags = tagRepository.GetTags().ToList();
 
             //Assert
-            Assert.NotNull(allEmployee);
-            Assert.Equal(5, allEmployee.Count());
+            Assert.NotNull(allTags);
+            Assert.Equal(5, allTags.Count());
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace MATest.Test.Services
             using var context = GetSampleData(nameof(UpdateTag_ShouldUpdateTag));
             //Arrange
             var tagRepository = MockTagRepository(context);
-            var tag = tagRepository.GetTags().FirstOrDefault(x => x.Id == 3);
+            var tag = tagRepository.GetTags().FirstOrDefault(x => x.Id == 2);
             tag.Name = "fpl2";
 
             //Act
