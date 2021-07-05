@@ -13,7 +13,7 @@ namespace MusicAdventureAPI.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/category")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository categoryRepo;
