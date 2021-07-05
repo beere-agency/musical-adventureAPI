@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MusicAdventureAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/tag")]
     [Authorize]
     [ApiController]
     public class TagController : ControllerBase
