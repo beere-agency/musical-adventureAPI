@@ -11,7 +11,8 @@ using MusicAdventureAPI.DTOs;
 namespace MusicAdventureAPI.Controllers
 {
     [ApiController]
-    [Route("api/product")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/product")]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository productRepo;

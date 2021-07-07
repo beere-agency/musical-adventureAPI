@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace MusicAdventureAPI.Controllers
 {
-    [Route("api/tag")]
     [Authorize]
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/tag")]
     public class TagController : ControllerBase
     {
         private readonly ITagRepository tagRepo;
