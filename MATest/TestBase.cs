@@ -34,6 +34,8 @@ namespace MATest
             tags.Add(dataFactory.GetTag(6,"hello",DateTime.Now.AddDays(-1),DateTime.Now));
             context.Tags.AddRange(tags);
 
+            context.SaveChanges();
+
             categories.Add(dataFactory.GetCategory(1, "Hip hop", "American Music", DateTime.Now.AddDays(-1), DateTime.Now));
             categories.Add(dataFactory.GetCategory(2, "Afro Pop", "African Music", DateTime.Now.AddDays(-1), DateTime.Now));
             categories.Add(dataFactory.GetCategory(3, "R and B", "Rythm and Blues Music", DateTime.Now.AddDays(-1), DateTime.Now));

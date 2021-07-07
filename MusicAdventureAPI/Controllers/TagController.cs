@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace MusicAdventureAPI.Controllers
 {
-    [Route("api/tag")]
     [Authorize]
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/tag")]
     public class TagController : ControllerBase
     {
         private readonly ITagRepository tagRepo;
@@ -58,6 +59,19 @@ namespace MusicAdventureAPI.Controllers
             tag = mapper.Map(model, tag);
             tagRepo.Update(tag);
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteTag(int id)
+        {
+            var tag = tagRepo.GetById(id);
+
+            if (tag == null)
+            {
+                return NotFound();
+            }
+            tagRepo.Delete(tag);
             return NoContent();
         }
     }

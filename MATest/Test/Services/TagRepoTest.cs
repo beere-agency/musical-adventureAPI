@@ -2,6 +2,7 @@
 using MAService.Implementation;
 using MAService.Interface;
 using MATest.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,23 +65,26 @@ namespace MATest.Test.Services
             //Assert
             Assert.Equal(tag.Name, updatedTag.Name);
             Assert.Equal(4, allTags.ToList().Count());
+
+            context.Dispose();
         }
 
-        //[Fact]
-        //public void DeleteTag_ShouldDeleteTag()
-        //{
-        //    using var context = GetSampleData(nameof(UpdateTag_ShouldUpdateTag));
-        //    //Arrange
-        //    var tagRepository = MockTagRepository(context);
-        //    var tag = tagRepository.GetTags().FirstOrDefault(x => x.Id == 6);
+        [Fact]
+        public void DeleteTag_ShouldDeleteTag()
+        {
+            using var context = GetSampleData(nameof(UpdateTag_ShouldUpdateTag));
+            //Arrange
+            var tagRepository = MockTagRepository(context);
+            var tag = tagRepository.GetTags().FirstOrDefault(x => x.Id == 6);
 
-        //    //Act
-        //    tagRepository.Delete(tag);
-        //    var allTags = tagRepository.GetTags();
+            //Act
+            tagRepository.Delete(tag);
+            var allTags = tagRepository.GetTags();
 
-        //    //Assert
-        //    Assert.Null(tagRepository.GetTags().FirstOrDefault(x => x.Id == 6));
-        //}
+            //Assert
+            Assert.Null(tagRepository.GetTags().FirstOrDefault(x => x.Id == 6));
+            context.Dispose();
+        }
 
 
         #region helpers

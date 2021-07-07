@@ -15,7 +15,8 @@ using Microsoft.Extensions.Configuration;
 
 namespace MusicAdventureAPI.Controllers
 {
-    [Route("api/auth")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/auth")]
     [ApiController]
     public class AccountController : ControllerBase
     {

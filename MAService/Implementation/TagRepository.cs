@@ -40,7 +40,7 @@ namespace MAService.Implementation
 
         public void Update(Tag tag)
         {
-            tag.LastModified = DateTime.Now;
+            tag.LastModified = DateTime.Now;            
             ctx.Tags.Update(tag);
             SaveChanges();
         }
