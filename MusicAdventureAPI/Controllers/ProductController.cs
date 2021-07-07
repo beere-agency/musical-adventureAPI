@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MADomain;
 using MAService.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicAdventureAPI.DTOs;
 
@@ -16,7 +17,7 @@ namespace MusicAdventureAPI.Controllers
         private readonly IProductRepository productRepo;
         private readonly IMapper mapper;
         private readonly IFileStorageRepository fileStorage;
-        private string container = "MAproducts";
+        private string container = "maproducts";
         public ProductController(IProductRepository _productRepo, IMapper _mapper, IFileStorageRepository _fileStorage)
         {
             productRepo = _productRepo;
@@ -41,7 +42,8 @@ namespace MusicAdventureAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateProduct([FromBody] ProductCreationDTO model)
+        //[Consumes("multipart/form-data")]
+        public async Task<ActionResult> CreateProduct([FromForm] ProductCreationDTO model)
         {
             var product = mapper.Map<Product>(model);
             if (model.ImageFile != null)
@@ -53,8 +55,8 @@ namespace MusicAdventureAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut]
-        public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductCreationDTO model)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateProduct(int id, [FromForm] ProductCreationDTO model)
         {
             var product = productRepo.GetById(id);
             if (product is null)
@@ -67,6 +69,20 @@ namespace MusicAdventureAPI.Controllers
                 product.ImageUrl = await fileStorage.EditFile(container, model.ImageFile, product.ImageUrl);
             }
             productRepo.Update(product);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var product = productRepo.GetById(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            productRepo.Delete(product);
+            await fileStorage.DeleteFile(product.ImageUrl, container);
             return NoContent();
         }
     }

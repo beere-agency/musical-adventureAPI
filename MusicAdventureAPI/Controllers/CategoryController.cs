@@ -58,5 +58,18 @@ namespace MusicAdventureAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteCategory(int id)
+        {
+            var category = categoryRepo.GetById(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+            categoryRepo.Delete(category);
+            return NoContent();
+        }
     }
 }

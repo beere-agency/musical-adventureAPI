@@ -91,6 +91,7 @@ namespace MusicAdventureAPI.Extensions
 
                     }
                 });
+                swagger.OperationFilter<SwaggerFileOperationFilter>();
             });
         }
     }

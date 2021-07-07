@@ -60,5 +60,18 @@ namespace MusicAdventureAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteTag(int id)
+        {
+            var tag = tagRepo.GetById(id);
+
+            if (tag == null)
+            {
+                return NotFound();
+            }
+            tagRepo.Delete(tag);
+            return NoContent();
+        }
     }
 }
