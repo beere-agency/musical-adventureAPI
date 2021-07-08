@@ -15,28 +15,26 @@ namespace MusicAdventureAPI.Controllers
     [Route("api/v{version:apiVersion}/product")]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository productRepo;
         private readonly IMapper mapper;
-        private readonly IFileStorageRepository fileStorage;
+        private readonly IRepositoryManager repositoryManager;
         private string container = "maproducts";
-        public ProductController(IProductRepository _productRepo, IMapper _mapper, IFileStorageRepository _fileStorage)
+        public ProductController(IMapper _mapper,IRepositoryManager _repositoryManager)
         {
-            productRepo = _productRepo;
             mapper = _mapper;
-            fileStorage = _fileStorage;
+            repositoryManager = _repositoryManager;
         }
 
         [HttpGet]
         public ActionResult<List<ProductDTO>> GetAllProducts()
         {
-            var products = productRepo.GetProductsWithRelationship().ToList();
+            var products = repositoryManager.ProductRepository.GetProductsWithRelationship().ToList();
             return Ok(mapper.Map<List<ProductDTO>>(products));
         }
 
         [HttpGet("{id}")]
         public ActionResult<ProductDTO> GetProductsById(int id)
         {
-            var product = productRepo.GetById(id);
+            var product = repositoryManager.ProductRepository.GetById(id);
             if (product == null) return NotFound();
 
             return Ok(mapper.Map<ProductDTO>(product));
@@ -49,9 +47,9 @@ namespace MusicAdventureAPI.Controllers
             var product = mapper.Map<Product>(model);
             if (model.ImageFile != null)
             {
-                product.ImageUrl = await fileStorage.SaveFile(container, model.ImageFile);
+                product.ImageUrl = await repositoryManager.FileStorageRepository.SaveFile(container, model.ImageFile);
             }
-            productRepo.Create(product);
+            repositoryManager.ProductRepository.Create(product);
 
             return NoContent();
         }
@@ -59,7 +57,7 @@ namespace MusicAdventureAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateProduct(int id, [FromForm] ProductCreationDTO model)
         {
-            var product = productRepo.GetById(id);
+            var product = repositoryManager.ProductRepository.GetById(id);
             if (product is null)
             {
                 return NotFound();
@@ -67,23 +65,23 @@ namespace MusicAdventureAPI.Controllers
             product = mapper.Map(model, product);
             if (model.ImageFile != null)
             {
-                product.ImageUrl = await fileStorage.EditFile(container, model.ImageFile, product.ImageUrl);
+                product.ImageUrl = await repositoryManager.FileStorageRepository.EditFile(container, model.ImageFile, product.ImageUrl);
             }
-            productRepo.Update(product);
+            repositoryManager.ProductRepository.Update(product);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
-            var product = productRepo.GetById(id);
+            var product = repositoryManager.ProductRepository.GetById(id);
 
             if (product == null)
             {
                 return NotFound();
             }
-            productRepo.Delete(product);
-            await fileStorage.DeleteFile(product.ImageUrl, container);
+            repositoryManager.ProductRepository.Delete(product);
+            await repositoryManager.FileStorageRepository.DeleteFile(product.ImageUrl, container);
             return NoContent();
         }
     }

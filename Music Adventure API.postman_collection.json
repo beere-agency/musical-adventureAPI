@@ -1,0 +1,437 @@
+{
+	"info": {
+		"_postman_id": "409f187e-d791-4c22-9b6f-d5d1a1fada84",
+		"name": "Music Adventure API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"kazeemquadri01\",\r\n  \"password\": \"Abc123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}auth/login",
+							"host": [
+								"{{mntr_baseUri}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"kazeemquadri01\",\r\n  \"email\": \"kaz@kaz.com.ng\",\r\n  \"password\": \"Abc123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}auth/register",
+							"host": [
+								"{{mntr_baseUri}}auth"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}product",
+							"host": [
+								"{{mntr_baseUri}}product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}product/2",
+							"host": [
+								"{{mntr_baseUri}}product"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}product/1",
+							"host": [
+								"{{mntr_baseUri}}product"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "CategoryIds",
+									"value": "[1]",
+									"type": "text"
+								},
+								{
+									"key": "Name",
+									"value": "Thri",
+									"type": "text"
+								},
+								{
+									"key": "Description",
+									"value": "Des S",
+									"type": "text"
+								},
+								{
+									"key": "ImageFile",
+									"type": "file",
+									"src": "/C:/Users/Simplex IT/Downloads/WhatsApp Image 2021-07-06 at 13.42.50 (1).jpeg"
+								},
+								{
+									"key": "price",
+									"value": "1244",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}product/2",
+							"host": [
+								"{{mntr_baseUri}}product"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://musicadventure.azurewebsites.net/api/product",
+							"protocol": "https",
+							"host": [
+								"musicadventure",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}category",
+							"host": [
+								"{{mntr_baseUri}}category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}category/1",
+							"host": [
+								"{{mntr_baseUri}}category"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}category/1",
+							"host": [
+								"{{mntr_baseUri}}category"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"Hip Hop\",\r\n  \"description\": \"American Music\",\r\n  \"isSubCategory\": false,\r\n  \"parentId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}category/1",
+							"host": [
+								"{{mntr_baseUri}}category"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Parent\",\r\n  \"description\": \"Parent Pop\",\r\n  \"isSubCategory\": false,\r\n  \"parentId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}category",
+							"host": [
+								"{{mntr_baseUri}}category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tag",
+			"item": [
+				{
+					"name": "Get Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}tag",
+							"host": [
+								"{{mntr_baseUri}}tag"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tag By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}tag/1",
+							"host": [
+								"{{mntr_baseUri}}tag"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tag",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mntr_baseUri}}tag/2",
+							"host": [
+								"{{mntr_baseUri}}tag"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tag",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"Songs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}tag/1",
+							"host": [
+								"{{mntr_baseUri}}tag"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tag",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Song\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mntr_baseUri}}tag",
+							"host": [
+								"{{mntr_baseUri}}tag"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoia2F6ZWVtcXVhZHJpMDEiLCJqdGkiOiIyNmI4YzdlMC0wYmRiLTQyZjItYTI1Yy0xM2RjODQwMDFhZTUiLCJleHAiOjE2MjU2ODIyNzcsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTk5MjEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.IF3c91ONm4GUyO3qQ7wJ2ZkGXWIs5n0CrQlg9_gxYU4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var baseUri = 'https://localhost:5001/api/v1/';",
+					"",
+					"pm.globals.set(\"mntr_baseUri\",baseUri);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
