@@ -42,10 +42,11 @@ namespace MusicAdventureAPI.Extensions
 
         public static void ConfigureRepository(this IServiceCollection services)
         {
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ITagRepository, TagRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IFileStorageRepository, FileStorageRepository>();
+            //services.AddScoped<ICategoryRepository, CategoryRepository>();
+            //services.AddScoped<ITagRepository, TagRepository>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
+            //services.AddScoped<IFileStorageRepository, FileStorageRepository>();
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)

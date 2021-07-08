@@ -18,25 +18,25 @@ namespace MusicAdventureAPI.Controllers
     [Route("api/v{version:apiVersion}/tag")]
     public class TagController : ControllerBase
     {
-        private readonly ITagRepository tagRepo;
+        private readonly IRepositoryManager repositoryManager;
         private readonly IMapper mapper;
-        public TagController(ITagRepository _tagRepo, IMapper mapper)
+        public TagController(IMapper _mapper, IRepositoryManager _repositoryManager)
         {
-            tagRepo = _tagRepo;
-            this.mapper = mapper;
+            mapper = _mapper;
+            repositoryManager = _repositoryManager;
         }
 
         [HttpGet]
         public ActionResult<List<TagDTO>> GetAllTags()
         {
-            var tags = tagRepo.GetTags().ToList();
+            var tags = repositoryManager.TagRepository.GetTags().ToList();
             return Ok(mapper.Map<List<TagDTO>>(tags));
         }
 
         [HttpGet("{id}")]
         public ActionResult<TagDTO> GetTagById(int id)
         {
-            var tag = tagRepo.GetById(id);
+            var tag = repositoryManager.TagRepository.GetById(id);
             if (tag == null) return NotFound();
 
             return Ok(mapper.Map<TagDTO>(tag));
@@ -46,7 +46,7 @@ namespace MusicAdventureAPI.Controllers
         public ActionResult CreateTag([FromBody] TagCreationDTO model)
         {
             var tag = mapper.Map<Tag>(model);
-            tagRepo.Create(tag);
+            repositoryManager.TagRepository.Create(tag);
 
             return NoContent();
         }
@@ -54,10 +54,10 @@ namespace MusicAdventureAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateTag(int id, [FromBody] TagUpdateDTO model)
         {
-            var tag = tagRepo.GetById(id);
+            var tag = repositoryManager.TagRepository.GetById(id);
             if (tag == null) return NotFound();
             tag = mapper.Map(model, tag);
-            tagRepo.Update(tag);
+            repositoryManager.TagRepository.Update(tag);
 
             return NoContent();
         }
@@ -65,13 +65,13 @@ namespace MusicAdventureAPI.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteTag(int id)
         {
-            var tag = tagRepo.GetById(id);
+            var tag = repositoryManager.TagRepository.GetById(id);
 
             if (tag == null)
             {
                 return NotFound();
             }
-            tagRepo.Delete(tag);
+            repositoryManager.TagRepository.Delete(tag);
             return NoContent();
         }
     }
