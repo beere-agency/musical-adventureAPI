@@ -31,6 +31,13 @@ namespace MusicAdventureAPI.Controllers
             return Ok(mapper.Map<List<ProductDTO>>(products));
         }
 
+        [HttpGet("basic")]
+        public ActionResult<List<ProductDTO>> GetAllProductsBasicDetial()
+        {
+            var products = repositoryManager.ProductRepository.GetProductsWithRelationship().ToList();
+            return Ok(mapper.Map<List<ProductBasicDTO>>(products));
+        }
+
         [HttpGet("{id}")]
         public ActionResult<ProductDTO> GetProductsById(int id)
         {

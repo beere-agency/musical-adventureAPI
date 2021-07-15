@@ -12,6 +12,7 @@ namespace MusicAdventureAPI.Profiles
             CreateMap<Product, ProductDTO>()
                     .ForMember(x => x.Tags, options => options.MapFrom(MapProductTags))
                     .ForMember(x => x.Categories, options => options.MapFrom(MapProductCategories));
+            CreateMap<Product, ProductBasicDTO>();
 
             //Product Mapping
             CreateMap<ProductCreationDTO, Product>()
