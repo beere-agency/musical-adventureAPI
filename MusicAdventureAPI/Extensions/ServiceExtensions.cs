@@ -53,9 +53,10 @@ namespace MusicAdventureAPI.Extensions
         {
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo { 
-                    Title = "MusicAdventureAPI", 
-                    Version = "v1" ,
+                swagger.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "MusicAdventureAPI",
+                    Version = "v1",
                     Contact = new OpenApiContact
                     {
                         Name = "Kazeem Quadri",
@@ -107,6 +108,20 @@ namespace MusicAdventureAPI.Extensions
                 config.AssumeDefaultVersionWhenUnspecified = true;
                 // Advertise the API versions supported for the particular endpoint
                 config.ReportApiVersions = true;
+            });
+        }
+
+        public static void ConfigureCors(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    var frontEndURl = configuration.GetValue<string>("Frontend_Url");
+                    var frontEndDevUrl = configuration.GetValue<string>("FrontendDevUrl");
+                    builder.WithOrigins(new string[] { frontEndURl, frontEndDevUrl }).AllowAnyMethod().AllowAnyHeader()
+                    .WithExposedHeaders(new string[] { "totalAmountOfRecords" });
+                });
             });
         }
     }
