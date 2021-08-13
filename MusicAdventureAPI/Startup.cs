@@ -50,6 +50,9 @@ namespace MusicAdventureAPI
             // Adding Authentication  
             services.ConfigureJWT(Configuration);
 
+            // Configure CORs
+            services.ConfigureCors(Configuration);
+
             //Swagger Configuration
             services.ConfigureSwagger();
 
@@ -71,6 +74,8 @@ namespace MusicAdventureAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthentication();
             app.UseAuthorization();
